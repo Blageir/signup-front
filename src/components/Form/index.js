@@ -46,6 +46,7 @@ class Form extends React.Component {
     if (!id) {
       const enrollmentFromUrlParams = getStateFromUrlParams({
         intitule: '',
+        demarche: '',
         description: '',
         data_recipients: '',
         data_retention_period: '',
@@ -216,12 +217,12 @@ class Form extends React.Component {
           <EnrollmentHasCopiesNotification enrollmentId={enrollment.id} />
 
           {!isUserEnrollmentLoading && acl.update && (
-            <>
-              <div className="notification info">
-                Pensez à sauvegarder régulièrement votre demande en brouillon.
-              </div>
-              <DemarcheDescription />
-            </>
+            <div className="notification info">
+              Pensez à sauvegarder régulièrement votre demande en brouillon.
+            </div>
+          )}
+          {!isUserEnrollmentLoading && acl.update && !enrollment.demarche && (
+            <DemarcheDescription />
           )}
         </ScrollablePanel>
 
