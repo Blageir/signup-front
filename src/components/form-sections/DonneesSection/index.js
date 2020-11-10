@@ -54,7 +54,7 @@ const DonneesSection = ({
 
   return (
     <ScrollablePanel scrollableId="donnees">
-      <h2>Les données dont vous avez besoin</h2>
+      <h2>Les démarches en ligne auxquelles vous souhaitez vous abonner</h2>
       <DonneesDescription />
       <AdditionalRgpdAgreement
         disabled={disabled}

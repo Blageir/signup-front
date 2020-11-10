@@ -17,25 +17,7 @@ const DescriptionSection = ({
 
   return (
     <ScrollablePanel scrollableId="description">
-      <h2>Description de votre service</h2>
-      <div className="form__group">
-        <label htmlFor="intitule">
-          Nom du service
-          <Helper title="Il doit permettre de faciliter l’identification de votre service. Cette information pouvant être rendue publique, il convient d’être synthétique et précis." />
-        </label>
-        <input
-          type="text"
-          onChange={onChange}
-          name="intitule"
-          id="intitule"
-          placeholder={intitulePlaceholder}
-          readOnly={disabled}
-          value={intitule}
-        />
-        <small className="card__meta">
-          <i>Cette information peut être rendue publique.</i>
-        </small>
-      </div>
+      <h2>Description du(des) service(s)</h2>
       <div className="form__group">
         <label htmlFor="detailed-description">
           Description détaillée

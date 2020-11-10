@@ -13,7 +13,7 @@ import DonneesPersonnellesSection from '../components/form-sections/DonneesPerso
 import MiseEnOeuvreSection from '../components/form-sections/MiseEnOeuvreSection';
 
 const DemarcheDescription = () => (
-  <div className="notification grey">
+  <div style={{ color: 'red' }} className="notification grey">
     <p>
       Pour avoir accès à l’API Particulier, diffusant des données personnelles,
       vous devez obtenir un agrément. L’accès à cette API n’est pour l’instant
@@ -35,17 +35,6 @@ const DemarcheDescription = () => (
 );
 
 const contacts = {
-  metier: {
-    heading: 'Contact métier',
-    description: () => (
-      <p>
-        Cette personne sera contactée en cas de problème fonctionnel sur votre
-        service.
-      </p>
-    ),
-    email: '',
-    phone_number: '',
-  },
   technique: {
     heading: 'Responsable technique',
     description: () => (
@@ -72,29 +61,10 @@ const CadreJuridiqueDescription = () => (
 );
 
 const DonneesDescription = () => (
-  <div className="text-quote">
+  <div style={{ color: 'red' }} className="text-quote">
     <p>
       La loi informatique et libertés définit les principes à respecter lors de
       la collecte, du traitement et de la conservation de données personnelles.
-    </p>
-    <p>L’article 6 précise :</p>
-    <ul>
-      <li>
-        3° [les données] sont adéquates, pertinentes et non excessives au regard
-        des finalités pour lesquelles elles sont collectées et de leurs
-        traitements ultérieurs ;
-      </li>
-      <li>
-        4° Elles sont exactes, complètes et, si nécessaire, mises à jour ; les
-        mesures appropriées doivent être prises pour que les données inexactes
-        ou incomplètes au regard des finalités pour lesquelles elles sont
-        collectées ou traitées soient effacées ou rectifiées ;
-      </li>
-    </ul>
-    <p>
-      Nous vous remercions de sélectionner uniquement les données strictement
-      nécessaires à votre téléservice. Le non-respect du principe de
-      proportionnalité vous expose vis à vis de la CNIL.
     </p>
   </div>
 );
@@ -136,9 +106,8 @@ const ApiParticulier = ({
       navLinks={[
         { id: 'head', label: 'Formulaire', style: { fontWeight: 'bold' } },
         { id: 'organisation', label: 'Organisation' },
-        { id: 'demarche', label: 'Demarche' },
-        { id: 'description', label: 'Description' },
         { id: 'donnees', label: 'Données' },
+        { id: 'description', label: 'Description' },
         { id: 'cadre-juridique', label: 'Cadre juridique' },
         { id: 'donnees-personnelles', label: 'Données personnelles' },
         { id: 'contacts-moe', label: 'Mise en œuvre' },
@@ -155,25 +124,23 @@ const ApiParticulier = ({
     <div className="main">
       <Form
         enrollmentId={enrollmentId}
-        target_api="api_particulier"
-        title="Demande d'accès à API Particulier"
+        target_api="nhube"
+        title="Demande d'abonnement à une démarche en ligne"
         DemarcheDescription={DemarcheDescription}
       >
         <OrganisationSection />
-        <DemarcheSection />
-        <DescriptionSection
-          intitulePlaceholder={
-            '« Calcul du quotient familial pour la facturation scolaire et périscolaire »'
-          }
-        />
         <DonneesSection
           availableScopes={availableScopes}
           DonneesDescription={DonneesDescription}
         />
+        <DescriptionSection
+          intitulePlaceholder={
+            "« Service d'état civil », « service informatique »"
+          }
+        />
         <CadreJuridiqueSection
           CadreJuridiqueDescription={CadreJuridiqueDescription}
         />
-        <DonneesPersonnellesSection />
         <MiseEnOeuvreSection initialContacts={contacts} />
         <CguSection cguLink="https://particulier.api.gouv.fr/API_Particulier_modalites.pdf" />
       </Form>
